@@ -530,6 +530,24 @@ footer{padding-right:70px}
 }
 img{content-visibility:auto}
 </style>
+<style id="mobile-fix">
+.hero h1 i{font-style:normal;display:inline-block}
+.hero h1 .gt2{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero h1 .line:nth-child(2) span{background:none!important;-webkit-text-fill-color:currentColor;color:var(--ink)}
+.hero h1 .grad{animation:shine 6s 1.4s linear infinite!important}
+@media(max-width:700px){
+ nav .wrap{flex-wrap:nowrap!important;gap:8px;padding:8px 8px 8px 14px!important}
+ nav b{font-size:16px;white-space:nowrap}
+ nav .links{order:0!important;width:auto!important;flex:1 1 auto;min-width:0;margin-left:4px!important;justify-content:flex-start!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-mask:linear-gradient(90deg,transparent,#000 10px,#000 calc(100% - 16px),transparent);mask:linear-gradient(90deg,transparent,#000 10px,#000 calc(100% - 16px),transparent)}
+ nav .links::-webkit-scrollbar{display:none}
+ nav .links a{white-space:nowrap;padding:7px 10px!important;font-size:14px}
+ .navpill{display:none}
+ nav .links a.on{background:var(--glass);border-radius:999px}
+ nav{border-radius:999px!important}
+ .theme{width:36px!important;height:36px!important}
+ .hero{padding-top:96px!important}
+}
+</style>
 </head>
 <body>
 <div class="intro2" id="intro2" aria-hidden="true">
@@ -551,7 +569,7 @@ img{content-visibility:auto}
 <div class="blob b1"></div><div class="blob b2"></div><div class="goo" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
 <div>
 <span class="avail"><i></i>Salem, Tamil Nadu</span>
-<h1><span class="line"><span>I design it.</span></span><span class="line"><span>I run it.</span></span><span class="line"><span class="grad">I automate it.</span></span></h1>
+<h1><span class="line"><span>I design it.</span></span><span class="line"><span><i class="gt2">I run it.</i></span></span><span class="line"><span><i class="grad">I automate it.</i></span></span></h1>
 <div class="role"><span>Role:</span><span class="rot" id="rot">Creative Designer</span></div>
 <p class="lede">Two years of turning plans into stages, posters, hoardings and printed pages for BNI Salem's business community. Now I also build the AI tools the team runs those events on.</p>
 <div class="cta"><a class="btn solid mag" href="#systems">See the work <span class="arr">→</span></a><a class="btn ghost mag" href="#contact">Get in touch</a><a class="btn ghost mag dlcv" href="Prasanna-Venkat-CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M4 17v3h16v-3"/></svg>Download CV</a></div>
@@ -882,7 +900,7 @@ const mqs=[...document.querySelectorAll('.marquee')],base=[-1.6,1.2];let lastY=s
  par.forEach(p=>{const r=p.el.parentElement.getBoundingClientRect();p.el.style.translate=`0 ${(r.top)*p.s}px`;});
  const sk=Math.max(-8,Math.min(8,vel*.35));mqs.forEach((m,i)=>{m.style.transform=`rotate(${base[i]}deg) skewX(${sk}deg)`;});
  let cand=null;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.4)cand=links[i];});
- if(cand!==active){links.forEach(a=>a.classList.toggle('on',a===cand));active=cand;if(!box.matches(':hover'))place(active);}
+ if(cand!==active){links.forEach(a=>a.classList.toggle('on',a===cand));active=cand;if(cand&&box.scrollWidth>box.clientWidth)box.scrollTo({left:cand.offsetLeft-40,behavior:'smooth'});if(!box.matches(':hover'))place(active);}
  requestAnimationFrame(loop);
 })();
 addEventListener('resize',()=>place(active));
